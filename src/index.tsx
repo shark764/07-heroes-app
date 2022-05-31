@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 import HeroesApp from './HeroesApp';
 import reportWebVitals from './reportWebVitals';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'animate.css';
 import './index.css';
 
 const root = ReactDOM.createRoot(
@@ -10,9 +13,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <HeroesApp />
-    </BrowserRouter>
+    <HeroesApp />
   </React.StrictMode>
 );
 

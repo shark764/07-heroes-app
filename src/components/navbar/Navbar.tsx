@@ -1,8 +1,17 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import ItemLink from './ItemLink';
+
+const links = [
+  { to: '/marvel', label: 'Marvel' },
+  { to: '/dc', label: 'DC' },
+  { to: '/search', label: 'Search' },
+];
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    console.log('Logout, bye');
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -14,25 +23,12 @@ const Navbar = () => {
 
         <div className="navbar-collapse">
           <div className="navbar-nav">
-            <NavLink
-              className={({ isActive }) =>
-                `nav-item nav-link ${isActive ? 'active' : ''}`
-              }
-              to="/marvel">
-              Marvel
-            </NavLink>
-
-            <NavLink
-              className={({ isActive }) =>
-                `nav-item nav-link ${isActive ? 'active' : ''}`
-              }
-              to="/dc">
-              DC
-            </NavLink>
+            {links.map((link) => (
+              <ItemLink key={link.to} {...link} />
+            ))}
           </div>
         </div>
 
-        {/* eslint-disable-next-line max-len */}
         <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
           <ul className="navbar-nav ml-auto">
             <li>
