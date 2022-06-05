@@ -1,4 +1,8 @@
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext, ContextProps } from '@/auth/authContext';
+import { types } from '@/types/actions';
+import type { ActionReducer } from '@/types/types';
 import ItemLink from './ItemLink';
 
 const links = [
@@ -9,8 +13,15 @@ const links = [
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { authUser, updateAuthUser } = useContext(AuthContext) as ContextProps;
 
   const handleLogout = () => {
+    const action = {
+      type: types.logout,
+      payload: null,
+    };
+    updateAuthUser(action as ActionReducer);
+
     navigate('/login', { replace: true });
   };
 
@@ -32,7 +43,9 @@ const Navbar = () => {
         <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
           <ul className="navbar-nav ml-auto">
             <li>
-              <span className="nav-item nav-link text-info">Daniel</span>
+              <span className="nav-item nav-link text-info">
+                {authUser?.name}
+              </span>
             </li>
             <li>
               <button

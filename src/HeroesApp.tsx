@@ -1,9 +1,10 @@
+import AuthContextProvider from './auth/authContext';
 import AppRouter from './routers/AppRouter';
 
 const HeroesApp = () => (
-  <div>
+  <AuthContextProvider>
     <AppRouter />
-  </div>
+  </AuthContextProvider>
 );
 
 export default HeroesApp;
