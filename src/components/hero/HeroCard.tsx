@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { HeroType } from '@/data/heroes';
+import { heroImages } from '@/helpers/heroImages';
 
 const HeroCard = ({
   id,
@@ -10,7 +11,8 @@ const HeroCard = ({
   first_appearance,
   superhero,
 }: HeroType) => {
-  const imagePath = `/assets/${id}.jpg`;
+  // const imagePath = `/assets/${id}.jpg`;
+  const imagePath = heroImages(`./${id}.jpg`);
 
   return (
     <div className="col animate__animated animate__fadeIn">

@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { heroImages } from '@/helpers/heroImages';
 import { getHeroById } from '@/selectors/getHeroById';
 
 const HeroScreen = () => {
@@ -15,7 +16,8 @@ const HeroScreen = () => {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { id, superhero, alter_ego, characters, first_appearance, publisher } =
     hero;
-  const imagePath = `/assets/${id}.jpg`;
+  // const imagePath = `/assets/${id}.jpg`;
+  const imagePath = heroImages(`./${id}.jpg`);
 
   const handleReturn = () => {
     navigate(-1);
